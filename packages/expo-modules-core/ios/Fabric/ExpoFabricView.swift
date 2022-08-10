@@ -98,6 +98,9 @@ public class ExpoFabricView: ExpoFabricViewObjC {
     guard let view = moduleHolder?.definition.viewManager?.createView() ?? legacyViewManager?.view() else {
       fatalError()
     }
+    if let view = view as? ExpoView {
+      view.viewManager = self
+    }
     // Setting the content view automatically adds the view as a subview.
     contentView = view
   }
